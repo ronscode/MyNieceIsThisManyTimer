@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+
+    <!-- Bootstrap CSS -->
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css"
+      integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO"
+      crossorigin="anonymous"
+    />
+
+    <title>Gran Gran's Glady's Tracker</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1 class="text-center">Gran Gran's Gladys Tracker!</h1>
+
+      <table class="table">
+        <tbody>
+            <th scope="row">Minutes old:</th>
+            <td><span id="mins-old"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Hours old:</th>
+            <td><span id="hours-old"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Days old:</th>
+            <td><span id="days-old"></span></td>
+          </tr>
+          <tr>
+            <th scope="row">Months old:</th>
+            <td><span id="months-old"></span></td>
+          </tr>
+          <tr>
+              <th scope="row">Years old:</th>
+              <td><span id="years-old"></span></td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"
+      integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
+      crossorigin="anonymous"
+    ></script>
+
+    <script>
+      var today = new Date();
+
+      var happyDay = new Date("May 5, 2019 00:13:30 GMT+04:00");
+
+      function thisMany(birth, current) {
+        var theCount = Math.floor(current.getTime() - birth.getTime());
+        var aDay = 1000 * 60 * 60 * 24;
+        var aHour = 1000 * 60 * 60;
+        var aMin = 1000 * 60;
+
+        var days = Math.floor(theCount / aDay);
+        var hours = Math.floor(theCount / aHour).toLocaleString();
+        var mins = Math.floor(theCount / aMin).toLocaleString();
+        var months = Math.floor(days / 31);
+        var years = Math.floor(months / 12);
+
+        var theBabyClock = current.toDateString();
+        theBabyClock += " was";
+        theBabyClock += days + " days ";
+        theBabyClock += months + " months ";
+        theBabyClock += years + " years ago \n";
+
+        document.getElementById('mins-old').innerHTML = mins;
+        document.getElementById("hours-old").innerHTML = hours;
+        document.getElementById("days-old").innerHTML = days;
+        document.getElementById("months-old").innerHTML = months;
+        
+
+        if (years <= 0 ) {
+          document.getElementById('years-old').innerHTML = "Coming soon May 4th 2020!"
+        } else {
+          document.getElementById("years-old").innerHTML = years;
+        }
+      }
+
+      test = thisMany(happyDay, today);
+      console.log(test);
+    </script>
+  </body>
+</html>
